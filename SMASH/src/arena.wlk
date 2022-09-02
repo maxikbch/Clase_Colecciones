@@ -19,10 +19,10 @@ object arena {
 	//es amateur cuando la cantidad de integrantes sin poder es mayor a la mitad de sus integrantes
 	
 	method esAmateur() {
-		return self.luchadoresSinMuchoPoder().size() > self.cantidadDeLuchadores() / 2
+		return self.luchadoresDebiles().size() > self.cantidadDeLuchadores() / 2
 	}
 	
-	method luchadoresSinMuchoPoder() {
+	method luchadoresDebiles() {
 		return luchadores.filter({ unLuchador => !unLuchador.tieneMuchoPoder() })
 	}
 	
@@ -30,16 +30,15 @@ object arena {
 		return luchadores.map({ unLuchador => unLuchador.nombre() })
 	}
 	
-	method entrenarTodosLosLuchadores() {
-		luchadores.forEach({ unLuchador => unLuchador.descanzar() })
+	method descansarTodosLosLuchadores() {
+		luchadores.forEach({ unLuchador => unLuchador.descansar() })
 	}
 	
 	method combateSimple(){
 		luchadores.forEach({unLuchador => self.atacarAlgunRival(unLuchador)})
-		return self.luchadorMenosAgotado()
 	}
 	
-	method luchadorMenosAgotado(){
+	method luchadorGanador(){
 		return luchadores.min({unLuchador => unLuchador.agotamiento()})
 	}
 	

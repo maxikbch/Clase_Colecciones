@@ -9,7 +9,7 @@ object mario {
 	
 	method tieneMuchoPoder() = true
 	
-	method descanzar(){
+	method descansar(){
 		agotamiento = 0;
 	}
 	
@@ -42,7 +42,7 @@ object link {
 		return armas.size() > 3
 	}
 	
-	method descanzar(){
+	method descansar(){
 		agotamiento = 0;
 	}
 	
@@ -87,18 +87,13 @@ object sora {
 		return comandos.contains("Pyro++")
 	}
 	
-	method descanzar(){
+	method descansar(){
 		agotamiento = 0;
 	}
 	
 	method evolucionar() {
-		comandos.forEach({unComando => self.mejorarComando(unComando)})
+		comandos = comandos.map({unComando => unComando + "+"}).asSet()
 		nivel++
-	}
-
-	method mejorarComando(unComando){
-		comandos.remove(unComando)
-		comandos.add(unComando + "+")
 	}
 	
 	method danioAtaqueSimple(){
