@@ -17,9 +17,9 @@ describe "Tests de Mario" {
 	
 	test "aumenta el agotamiento de mario cuando recibe un ataque" {
 		
-		const danio = 400
-		mario.recibirAtaque(danio)
-		assert.equals(400,mario.agotamiento())
+		const agotamientoAntesDeRecibirAtaque = mario.agotamiento()
+		mario.recibirAtaque(400)
+		assert.that(mario.agotamiento() > agotamientoAntesDeRecibirAtaque)
 		
 	}
 	
