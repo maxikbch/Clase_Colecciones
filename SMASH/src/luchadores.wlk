@@ -77,6 +77,8 @@ object sora {
 	var comandos = #{"Pyro", "Hielo", "Electro"}
 	var nivel = 1
 	
+	method nivel() = nivel
+	
 	method nombre() = nombre
 	
 	method agotamiento() = agotamiento
