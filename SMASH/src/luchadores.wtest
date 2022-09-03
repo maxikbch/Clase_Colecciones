@@ -1,0 +1,73 @@
+import luchadores.*
+
+describe "Tests de Mario" {
+
+	test "mario siempre tiene mucho poder" {
+
+		assert.that(mario.tieneMuchoPoder())
+
+	}
+	
+	test "mario comienza con 0 de agotamiento" {
+		
+		assert.equals(0, mario.agotamiento())
+		
+	}
+	
+	
+	test "aumenta el agotamiento de mario cuando recibe un ataque" {
+		
+		const danio = 400
+		mario.recibirAtaque(danio)
+		assert.equals(400,mario.agotamiento())
+		
+	}
+	
+	test "mario deja de estar agotado si descanza" {
+		
+		const danio = 100
+		mario.recibirAtaque(danio)
+		mario.descansar()
+		assert.equals(0, mario.agotamiento())
+		
+	}
+	
+	test "mario al evolucionar aumenta su ataque base" {
+		
+		const danioEvolucionado = 13
+		mario.evolucionar()
+		assert.equals(danioEvolucionado, mario.danioAtaqueSimple())
+		
+	}
+	
+}
+
+describe "Tests de la Sora" {
+	
+	
+	test "sora comienza en nivel 1" {
+		
+		assert.equals(1, sora.nivel())
+		
+	}
+	
+	test "sora al evolucionar 2 veces obtiene mucho poder" {
+		
+		sora.evolucionar()
+		sora.evolucionar()
+		assert.that(sora.tieneMuchoPoder())
+		
+	}
+	
+	test "sora comienza con el comando Pyro" {
+		
+		assert.that(sora.comandos().contains("Pyro"))
+	}
+	
+	test "sora comienza con un danio ataque simple de " {
+		
+		const danioBase = 3
+		assert.equals( danioBase, sora.danioAtaqueSimple())
+	}
+	
+}

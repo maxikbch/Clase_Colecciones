@@ -1,0 +1,29 @@
+import arena.*
+import luchadores.*
+
+describe "Tests de la arena" {
+
+	const luchadores = #{ mario, link, sora }
+
+	method cargarLuchadores() {
+		luchadores.forEach({ integrante => arena.agregarLuchador(integrante)})
+	}
+
+	test "la arena comienza vacía" {
+		assert.equals(0, arena.cantidadDeLuchadores())
+	}
+
+	test "si agregamos a mario , link y sora , la arena tiene 3 luchadores" {
+		
+		self.cargarLuchadores()
+		assert.equals(3, arena.cantidadDeLuchadores())
+	}
+
+	test "si le pedimos las los nombres de los luchadores a la arena nos las devuelve" {
+		
+		self.cargarLuchadores()
+		const nombres = #{mario.nombre(), link.nombre() , sora.nombre()} 
+		assert.equals(nombres, arena.nombresDeLosLuchadores().asSet())
+	}
+
+}
